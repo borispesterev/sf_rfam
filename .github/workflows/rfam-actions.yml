@@ -1,0 +1,21 @@
+name: rfam-actions
+
+on: [push]
+
+jobs:
+  rfam-connect:
+    runs-on: ubuntu-latest
+
+    env:
+      db_host: mysql-rfam-public.ebi.ac.uk
+      db_user: rfamro
+      db_port: 4497
+      db_database: Rfam
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Connect to Public Rfam Database
+        run: |
+          mysql -h $db_host -u $db_user -P $db_port -D $db_database < script.sql
