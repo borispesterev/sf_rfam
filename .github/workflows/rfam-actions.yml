@@ -16,6 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Connect to Public Rfam Database
+      - name: Connect to Rfam Database
         run: |
           mysql -h $db_host -u $db_user -P $db_port -D $db_database < script.sql
